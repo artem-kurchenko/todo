@@ -1,7 +1,7 @@
 const tasks = [
   'Сделать проектную работу',
   'Полить цветы',
-  // `<img src="somelink" onerror="alert('вас взломали')" />`,
+  `<img src="somelink" onerror="alert('вас взломали')" />`,
   'Пройти туториал по Реакту',
   'Сделать фронт для своего проекта',
   'Погулять с собакой',
@@ -18,21 +18,12 @@ function renderList(data){
      data.forEach(item=>renderItem(item))
 }
 function renderItem(text){
-    let template = `<li class="todo">
-    <p class="todo__text">
-      ${text}
-    </p>
-    <button class="button todo__btn todo__btn_type_edit">
+   const templateElement = document.querySelector(".todo-template").content;
+   const listElement = templateElement.cloneNode(true);
+   const textElement = listElement.querySelector(".todo__text");
+   textElement.textContent = text;
+   todosListElement.append(listElement);
 
-    </button>
-    <button class="todo__btn button todo__btn_type_copy">
-
-    </button>
-    <button class="todo__btn button todo__btn_type_remove">
-
-    </button>
-  </li>`
-  todosListElement.insertAdjacentHTML('beforeend', template);
 }
 renderList(tasks);
 
